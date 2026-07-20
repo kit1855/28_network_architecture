@@ -78,8 +78,9 @@ Vagrant.configure("2") do |config|
         v.cpus = 1
       end
 
+      # Исправленный синтаксис для Vagrant 2.4.9
       boxconfig[:net].each do |ipconf|
-        box.vm.network "private_network", ipconf
+        box.vm.network "private_network", **ipconf
       end
 
       if boxconfig.key?(:public)
@@ -106,9 +107,6 @@ Vagrant.configure("2") do |config|
           sysctl -w net.ipv4.ip_forward=1
           echo "net.ipv4.conf.all.forwarding = 1" >> /etc/sysctl.conf
           echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
-          # Отключаем дефолтный маршрут через eth0
-          sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
-          update-grub 2>/dev/null || true
           # Удаляем дефолтный маршрут через eth0
           ip route del default via 10.0.2.2 2>/dev/null || true
           # Добавляем маршрут по умолчанию через inetRouter
@@ -120,8 +118,6 @@ Vagrant.configure("2") do |config|
           sysctl -w net.ipv4.ip_forward=1
           echo "net.ipv4.conf.all.forwarding = 1" >> /etc/sysctl.conf
           echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
-          sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
-          update-grub 2>/dev/null || true
           ip route del default via 10.0.2.2 2>/dev/null || true
           ip route add default via 192.168.255.9
         SHELL
@@ -131,29 +127,21 @@ Vagrant.configure("2") do |config|
           sysctl -w net.ipv4.ip_forward=1
           echo "net.ipv4.conf.all.forwarding = 1" >> /etc/sysctl.conf
           echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
-          sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
-          update-grub 2>/dev/null || true
           ip route del default via 10.0.2.2 2>/dev/null || true
           ip route add default via 192.168.255.5
         SHELL
       when "centralServer"
         box.vm.provision "shell", run: "always", inline: <<-SHELL
-          sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
-          update-grub 2>/dev/null || true
           ip route del default via 10.0.2.2 2>/dev/null || true
           ip route add default via 192.168.0.1
         SHELL
       when "office1Server"
         box.vm.provision "shell", run: "always", inline: <<-SHELL
-          sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
-          update-grub 2>/dev/null || true
           ip route del default via 10.0.2.2 2>/dev/null || true
           ip route add default via 192.168.2.129
         SHELL
       when "office2Server"
         box.vm.provision "shell", run: "always", inline: <<-SHELL
-          sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
-          update-grub 2>/dev/null || true
           ip route del default via 10.0.2.2 2>/dev/null || true
           ip route add default via 192.168.1.1
         SHELL
