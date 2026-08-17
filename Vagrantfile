@@ -13,8 +13,8 @@ Vagrant.configure("2") do |config|
     inet.vm.box = "ubuntu/jammy64"
     inet.vm.hostname = "inetRouter"
     inet.vm.provider "virtualbox" do |v|
-      v.memory = 512
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 2
     end
   end
 
@@ -25,8 +25,8 @@ Vagrant.configure("2") do |config|
     central.vm.box = "ubuntu/jammy64"
     central.vm.hostname = "centralRouter"
     central.vm.provider "virtualbox" do |v|
-      v.memory = 512
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 2
     end
   end
 
@@ -37,8 +37,8 @@ Vagrant.configure("2") do |config|
     srv.vm.box = "ubuntu/jammy64"
     srv.vm.hostname = "centralServer"
     srv.vm.provider "virtualbox" do |v|
-      v.memory = 512
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 2
     end
   end
 
@@ -49,8 +49,8 @@ Vagrant.configure("2") do |config|
     office1.vm.box = "ubuntu/jammy64"
     office1.vm.hostname = "office1Router"
     office1.vm.provider "virtualbox" do |v|
-      v.memory = 512
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 2
     end
   end
 
@@ -61,8 +61,8 @@ Vagrant.configure("2") do |config|
     srv.vm.box = "ubuntu/jammy64"
     srv.vm.hostname = "office1Server"
     srv.vm.provider "virtualbox" do |v|
-      v.memory = 512
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 2
     end
   end
 
@@ -73,8 +73,8 @@ Vagrant.configure("2") do |config|
     office2.vm.box = "ubuntu/jammy64"
     office2.vm.hostname = "office2Router"
     office2.vm.provider "virtualbox" do |v|
-      v.memory = 512
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 2
     end
   end
 
@@ -85,8 +85,8 @@ Vagrant.configure("2") do |config|
     srv.vm.box = "ubuntu/jammy64"
     srv.vm.hostname = "office2Server"
     srv.vm.provider "virtualbox" do |v|
-      v.memory = 512
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 2
     end
   end
 
