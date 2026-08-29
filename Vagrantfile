@@ -8,10 +8,10 @@ Vagrant.configure("2") do |config|
 
 
   # ============================================
-  # 1. inetRouter (AlmaLinux 8)
+  # 1. inetRouter (AlmaLinux 9)
   # ============================================
   config.vm.define "inetRouter" do |inet|
-    inet.vm.box = "generic/almalinux8"
+    inet.vm.box = "almalinux/9"
     inet.vm.hostname = "inetRouter"
     inet.vm.provider "virtualbox" do |v|
       v.memory = 2048
