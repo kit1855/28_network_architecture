@@ -32,11 +32,11 @@ Vagrant.configure("2") do |config|
     end
     central.vm.network "private_network", ["192.168.255.2", 2, "255.255.255.252", "router-net"]
     central.vm.network "private_network", ["192.168.51.10", 3, "255.255.255.0"]
-    central.vm.network "private_network", ["192.168.255.2", 4, "255.255.255.252", "directors-net"]
-    central.vm.network "private_network", ["192.168.255.2", 5, "255.255.255.252", "office1Router-net"]
-    central.vm.network "private_network", ["192.168.255.2", 6, "255.255.255.252", "office2Router-net"]
-    central.vm.network "private_network", ["192.168.255.2", 7, "255.255.255.252", "hardware-net"]
-    central.vm.network "private_network", ["192.168.255.2", 8, "255.255.255.252", "wifi-net"]
+    central.vm.network "private_network", ["192.168.0.1", 4, "255.255.255.240", "directors-net"]
+    central.vm.network "private_network", ["192.168.255.9", 5, "255.255.255.252", "office1Router-net"]
+    central.vm.network "private_network", ["192.168.255.5", 6, "255.255.255.252", "office2Router-net"]
+    central.vm.network "private_network", ["192.168.0.33", 7, "255.255.255.240", "hardware-net"]
+    central.vm.network "private_network", ["192.168.0.65", 8, "255.255.255.192", "wifi-net"]
   end
 
   # ============================================
