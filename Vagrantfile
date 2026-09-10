@@ -16,8 +16,8 @@ Vagrant.configure("2") do |config|
       v.memory = 2048
       v.cpus = 2
     end
-    inet.vm.network "private_network", ["192.168.255.1", 2, "255.255.255.252", "router-net"]
-    inet.vm.network "private_network", ["192.168.50.10", 3, "255.255.255.0"]
+    inet.vm.network "private_network", ip: "192.168.255.1", adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "router-net"
+    inet.vm.network "private_network", ip: "192.168.50.10", adapter: 3, netmask: "255.255.255.0"
   end
 
   # ============================================
@@ -30,13 +30,13 @@ Vagrant.configure("2") do |config|
       v.memory = 2048
       v.cpus = 2
     end
-    central.vm.network "private_network", ["192.168.255.2", 2, "255.255.255.252", "router-net"]
-    central.vm.network "private_network", ["192.168.51.10", 3, "255.255.255.0"]
-    central.vm.network "private_network", ["192.168.0.1", 4, "255.255.255.240", "directors-net"]
-    central.vm.network "private_network", ["192.168.255.9", 5, "255.255.255.252", "office1Router-net"]
-    central.vm.network "private_network", ["192.168.255.5", 6, "255.255.255.252", "office2Router-net"]
-    central.vm.network "private_network", ["192.168.0.33", 7, "255.255.255.240", "hardware-net"]
-    central.vm.network "private_network", ["192.168.0.65", 8, "255.255.255.192", "wifi-net"]
+    central.vm.network "private_network", ip: "192.168.255.2", adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "router-net"
+    central.vm.network "private_network", ip: "192.168.51.10", adapter: 3, netmask: "255.255.255.0"
+    central.vm.network "private_network", ip: "192.168.0.1", adapter: 4, netmask: "255.255.255.240", virtualbox__intnet: "directors-net"
+    central.vm.network "private_network", ip: "192.168.255.9", adapter: 5, netmask: "255.255.255.252", virtualbox__intnet: "office1Router-net"
+    central.vm.network "private_network", ip: "192.168.255.5", adapter: 6, netmask: "255.255.255.252", virtualbox__intnet: "office2Router-net"
+    central.vm.network "private_network", ip: "192.168.0.33", adapter: 7, netmask: "255.255.255.240", virtualbox__intnet: "hardware-net"
+    central.vm.network "private_network", ip: "192.168.0.65", adapter: 8, netmask: "255.255.255.192", virtualbox__intnet: "wifi-net"
   end
 
   # ============================================
