@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
       v.memory = 2048
       v.cpus = 2
     end
-    srv.vm.network "private_network", ip: "192.168.0.1", adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "directors-net"
+    srv.vm.network "private_network", ip: "192.168.0.2", adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "directors-net"
     srv.vm.network "private_network", ip: "192.168.53.10", adapter: 3, netmask: "255.255.255.0"
   end
 
