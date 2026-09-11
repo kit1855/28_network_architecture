@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
       v.cpus = 2
     end
     inet.vm.network "private_network", ip: "192.168.255.1", adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "router-net"
-    inet.vm.network "private_network", ip: "192.168.50.10", adapter: 3, netmask: "255.255.255.0"
+    inet.vm.network "private_network", ip: "192.168.51.10", adapter: 3, netmask: "255.255.255.0"
   end
 
   # ============================================
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
       v.cpus = 2
     end
     central.vm.network "private_network", ip: "192.168.255.2", adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "router-net"
-    central.vm.network "private_network", ip: "192.168.51.10", adapter: 3, netmask: "255.255.255.0"
+    central.vm.network "private_network", ip: "192.168.52.10", adapter: 3, netmask: "255.255.255.0"
     central.vm.network "private_network", ip: "192.168.0.1", adapter: 4, netmask: "255.255.255.240", virtualbox__intnet: "directors-net"
     central.vm.network "private_network", ip: "192.168.255.9", adapter: 5, netmask: "255.255.255.252", virtualbox__intnet: "office1Router-net"
     central.vm.network "private_network", ip: "192.168.255.5", adapter: 6, netmask: "255.255.255.252", virtualbox__intnet: "office2Router-net"
@@ -43,12 +43,14 @@ Vagrant.configure("2") do |config|
   # 3. centralServer
   # ============================================
   config.vm.define "centralServer" do |srv|
-    srv.vm.box = "ubuntu/jammy64"
+    srv.vm.box = "almalinux/9"
     srv.vm.hostname = "centralServer"
     srv.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.cpus = 2
     end
+    srv.vm.network "private_network", ip: "192.168.0.1", adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "directors-net"
+    srv.vm.network "private_network", ip: "192.168.53.10", adapter: 3, netmask: "255.255.255.0"
   end
 
   # ============================================
