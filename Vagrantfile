@@ -38,6 +38,14 @@ Vagrant.configure("2") do |config|
     central.vm.network "private_network", ip: "192.168.0.33", adapter: 7, netmask: "255.255.255.240", virtualbox__intnet: "hardware2-net"
     # на схеме указано две сети Office hardware и не указана сеть wifi. Вторую сеть Office hardware заменил на сеть wifi.
     central.vm.network "private_network", ip: "192.168.0.65", adapter: 8, netmask: "255.255.255.192", virtualbox__intnet: "wifi-net"
+
+    central.vm.provision "shell",
+    run: "always",
+    inline: <<-SHELL
+      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con reload
+      nmcli con up 'System eth0'
+    SHELL
   end
 
   # ============================================
@@ -52,6 +60,14 @@ Vagrant.configure("2") do |config|
     end
     srv.vm.network "private_network", ip: "192.168.0.2", adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "directors-net"
     srv.vm.network "private_network", ip: "192.168.53.10", adapter: 3, netmask: "255.255.255.0"
+
+    srv.vm.provision "shell",
+    run: "always",
+    inline: <<-SHELL
+      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con reload
+      nmcli con up 'System eth0'
+    SHELL
   end
 
   # ============================================
@@ -72,6 +88,14 @@ Vagrant.configure("2") do |config|
     office1.vm.network "private_network", ip: "192.168.2.129", adapter: 6, netmask: "255.255.255.192", virtualbox__intnet: "managers-net"
     # на схеме указан интерфейс 192.168.2.192/26, а это адрес сети. Исправил на 192.168.2.193/26, как первый доступный айпи в этой сети.
     office1.vm.network "private_network", ip: "192.168.2.193", adapter: 7, netmask: "255.255.255.192", virtualbox__intnet: "hardware4-net"
+
+    office1.vm.provision "shell",
+    run: "always",
+    inline: <<-SHELL
+      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con reload
+      nmcli con up 'System eth0'
+    SHELL
   end
 
   # ============================================
@@ -86,6 +110,14 @@ Vagrant.configure("2") do |config|
     end
     srv.vm.network "private_network", ip: "192.168.2.130", adapter: 2, netmask: "255.255.255.192", virtualbox__intnet: "managers-net"
     srv.vm.network "private_network", ip: "192.168.55.10", adapter: 3, netmask: "255.255.255.0"
+
+    srv.vm.provision "shell",
+    run: "always",
+    inline: <<-SHELL
+      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con reload
+      nmcli con up 'System eth0'
+    SHELL
   end
 
   # ============================================
@@ -103,6 +135,14 @@ Vagrant.configure("2") do |config|
     office2.vm.network "private_network", ip: "192.168.1.1", adapter: 4, netmask: "255.255.255.128", virtualbox__intnet: "dev6-net"
     office2.vm.network "private_network", ip: "192.168.1.129", adapter: 5, netmask: "255.255.255.192", virtualbox__intnet: "test6-net"
     office2.vm.network "private_network", ip: "192.168.1.193", adapter: 6, netmask: "255.255.255.192", virtualbox__intnet: "hardware6-net"
+
+    office2.vm.provision "shell",
+    run: "always",
+    inline: <<-SHELL
+      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con reload
+      nmcli con up 'System eth0'
+    SHELL
   end
 
   # ============================================
@@ -117,6 +157,14 @@ Vagrant.configure("2") do |config|
     end
     srv.vm.network "private_network", ip: "192.168.1.2", adapter: 2, netmask: "255.255.255.128", virtualbox__intnet: "dev6-net"
     srv.vm.network "private_network", ip: "192.168.57.10", adapter: 3, netmask: "255.255.255.0"
+
+    srv.vm.provision "shell",
+    run: "always",
+    inline: <<-SHELL
+      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con reload
+      nmcli con up 'System eth0'
+    SHELL
   end
 
 end
