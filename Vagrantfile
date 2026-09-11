@@ -57,12 +57,18 @@ Vagrant.configure("2") do |config|
   # 4. office1Router
   # ============================================
   config.vm.define "office1Router" do |office1|
-    office1.vm.box = "ubuntu/jammy64"
+    office1.vm.box = "almalinux/9"
     office1.vm.hostname = "office1Router"
     office1.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.cpus = 2
     end
+    office1.vm.network "private_network", ip: "192.168.255.10", adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "office1Router-net"
+    office1.vm.network "private_network", ip: "192.168.54.10", adapter: 3, netmask: "255.255.255.0"
+    office1.vm.network "private_network", ip: "192.168.2.1", adapter: 4, netmask: "255.255.255.192", virtualbox__intnet: "dev-net"
+    office1.vm.network "private_network", ip: "192.168.2.65", adapter: 5, netmask: "255.255.255.240", virtualbox__intnet: "test-net"
+    office1.vm.network "private_network", ip: "192.168.2.129", adapter: 6, netmask: "255.255.255.192", virtualbox__intnet: "managers-net"
+    office1.vm.network "private_network", ip: "192.168.2.193", adapter: 7, netmask: "255.255.255.192", virtualbox__intnet: "hardware-net"
   end
 
   # ============================================
@@ -75,6 +81,8 @@ Vagrant.configure("2") do |config|
       v.memory = 2048
       v.cpus = 2
     end
+    srv.vm.network "private_network", ip: "192.168.2.130", adapter: 2, netmask: "255.255.255.192", virtualbox__intnet: "managers-net"
+    srv.vm.network "private_network", ip: "192.168.55.10", adapter: 3, netmask: "255.255.255.0"
   end
 
   # ============================================
