@@ -97,7 +97,7 @@ Vagrant.configure("2") do |config|
     end
     office2.vm.network "private_network", ip: "192.168.255.6", adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "office2Router-net"
     office2.vm.network "private_network", ip: "192.168.56.10", adapter: 3, netmask: "255.255.255.0"
-    office2.vm.network "private_network", ip: "192.168.1.1", adapter: 4, netmask: "255.255.255.224", virtualbox__intnet: "dev6-net"
+    office2.vm.network "private_network", ip: "192.168.1.1", adapter: 4, netmask: "255.255.255.128", virtualbox__intnet: "dev6-net"
     office2.vm.network "private_network", ip: "192.168.1.129", adapter: 5, netmask: "255.255.255.192", virtualbox__intnet: "test6-net"
     office2.vm.network "private_network", ip: "192.168.1.193", adapter: 6, netmask: "255.255.255.192", virtualbox__intnet: "hardware6-net"
   end
@@ -113,7 +113,7 @@ Vagrant.configure("2") do |config|
       v.cpus = 2
     end
     srv.vm.network "private_network", ip: "192.168.1.2", adapter: 2, netmask: "255.255.255.128", virtualbox__intnet: "dev6-net"
-    srv.vm.network "private_network", ip: "192.168.56.10", adapter: 3, netmask: "255.255.255.0"
+    srv.vm.network "private_network", ip: "192.168.57.10", adapter: 3, netmask: "255.255.255.0"
   end
 
 end
