@@ -31,9 +31,11 @@ Vagrant.configure("2") do |config|
         echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
         sudo iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
         sudo iptables -A FORWARD -j ACCEPT
-        sudo service iptables save
+        sudo iptables-save | sudo tee /etc/sysconfig/iptables
       SHELL
   end
+
+
 
   # ============================================
   # 2. centralRouter
