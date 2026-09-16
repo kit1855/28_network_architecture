@@ -24,8 +24,8 @@ Vagrant.configure("2") do |config|
       run: "always",
       inline: <<-SHELL
         sudo dnf install -y iptables-services
-        sudo systemctl stop firewalld
-        sudo systemctl disable firewalld
+#        sudo systemctl stop firewalld ### DEL THIS
+#        sudo systemctl disable firewalld  ### DEL STIS
         sudo systemctl enable iptables
         sudo sysctl -w net.ipv4.ip_forward=1
         echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
