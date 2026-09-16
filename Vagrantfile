@@ -6,7 +6,7 @@ ENV['VAGRANT_SERVER_URL'] = 'https://vagrant.elab.pro'
 
 Vagrant.configure("2") do |config|
 
-# ============================================
+  # ============================================
   # 1. inetRouter (AlmaLinux 9)
   # ============================================
   config.vm.define "inetRouter" do |inet|
@@ -16,8 +16,23 @@ Vagrant.configure("2") do |config|
       v.memory = 2048
       v.cpus = 2
     end
+
     inet.vm.network "private_network", ip: "192.168.255.1", adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "router-net"
     inet.vm.network "private_network", ip: "192.168.51.10", adapter: 3, netmask: "255.255.255.0"
+
+    inet.vm.provision "shell",
+      run: "always",
+      inline: <<-SHELL
+        sudo dnf install -y iptables-services
+        sudo systemctl stop firewalld
+        sudo systemctl disable firewalld
+        sudo systemctl enable iptables
+        sudo sysctl -w net.ipv4.ip_forward=1
+        echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
+        sudo iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
+        sudo iptables -A FORWARD -j ACCEPT
+        sudo service iptables save
+      SHELL
   end
 
   # ============================================
