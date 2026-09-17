@@ -24,8 +24,6 @@ Vagrant.configure("2") do |config|
       run: "always",
       inline: <<-SHELL
         sudo dnf install -y iptables-services
-#        sudo systemctl stop firewalld ### DEL THIS
-#        sudo systemctl disable firewalld  ### DEL STIS
         sudo systemctl enable iptables
         sudo sysctl -w net.ipv4.ip_forward=1
         echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
@@ -62,6 +60,18 @@ Vagrant.configure("2") do |config|
       nmcli con modify 'System eth0' ipv4.never-default yes
       nmcli con reload
       nmcli con up 'System eth0'
+######################
+# ВНОСИТЬ ПРАВКИ ТУТ #
+######################
+
+        sudo dnf install -y iptables-services
+        sudo systemctl enable iptables
+        sudo sysctl -w net.ipv4.ip_forward=1
+        echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
+        sudo iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
+        sudo iptables -A FORWARD -j ACCEPT
+        sudo iptables-save | sudo tee /etc/sysconfig/iptables
+
     SHELL
   end
 
