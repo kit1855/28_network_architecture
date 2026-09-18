@@ -57,25 +57,26 @@ Vagrant.configure("2") do |config|
     central.vm.provision "shell",
     run: "always",
     inline: <<-SHELL
-      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con modify 'eth0' ipv4.never-default yes
       nmcli con reload
-      nmcli con up 'System eth0'
-######################
-# ВНОСИТЬ ПРАВКИ ТУТ #
-######################
+      nmcli con up 'eth0'
+      sudo sysctl -w net.ipv4.ip_forward=1
+      grep -q "net.ipv4.ip_forward" /etc/sysctl.conf || echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
+      
 
-        sudo dnf install -y iptables-services
-        sudo systemctl enable iptables
-        sudo sysctl -w net.ipv4.ip_forward=1
-        echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
-        sudo ip route add 192.168.2.0/24 via 192.168.255.10
-        sudo ip route add 192.168.1.0/24 via 192.168.255.6
-        sudo ip route add default via 192.168.255.1
-        sudo iptables -A FORWARD -j ACCEPT
-        sudo iptables-save | sudo tee /etc/sysconfig/iptables
+
+      sudo ip route add 192.168.2.0/24 via 192.168.255.10
+      sudo nmcli connection modify <имя_подключения> +ipv4.routes "<сеть> <шлюз>"
+      sudo ip route add 192.168.1.0/24 via 192.168.255.6
+sudo nmcli connection modify <имя_подключения> +ipv4.routes "<сеть> <шлюз>"
+      sudo ip route add default via 192.168.255.1
+sudo nmcli connection modify <имя_подключения> +ipv4.routes "<сеть> <шлюз>"
+
+
 
     SHELL
   end
+# sudo nmcli connection modify <имя_подключения> +ipv4.routes "<сеть> <шлюз>"
 
   # ============================================
   # 3. centralServer
