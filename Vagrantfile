@@ -26,14 +26,15 @@ Vagrant.configure("2") do |config|
         sudo dnf install -y iptables-services
         sudo systemctl enable iptables
         sudo sysctl -w net.ipv4.ip_forward=1
-        echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
+        grep -q "net.ipv4.ip_forward" /etc/sysctl.conf || echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
         sudo iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
         sudo iptables -A FORWARD -j ACCEPT
         sudo iptables-save | sudo tee /etc/sysconfig/iptables
+        sudo nmcli connection modify "System eth1" +ipv4.routes "192.168.0.0/16 192.168.255.2"
+        sudo nmcli con reload
+        sudo nmcli con up 'System eth1'
       SHELL
   end
-
-
 
   # ============================================
   # 2. centralRouter
