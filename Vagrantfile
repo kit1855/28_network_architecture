@@ -88,10 +88,13 @@ Vagrant.configure("2") do |config|
     srv.vm.provision "shell",
     run: "always",
     inline: <<-SHELL
-      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con modify 'eth0' ipv4.never-default yes
       nmcli con reload
-      nmcli con up 'System eth0'
-    SHELL
+      nmcli con up 'eth0'
+      sudo nmcli connection modify "System eth1" +ipv4.routes "0.0.0.0/0 192.168.0.1"
+      sudo nmcli con reload
+      sudo nmcli con up 'System eth1'
+      SHELL
   end
 
   # ============================================
