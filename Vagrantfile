@@ -120,9 +120,14 @@ Vagrant.configure("2") do |config|
     office1.vm.provision "shell",
     run: "always",
     inline: <<-SHELL
-      nmcli con modify 'System eth0' ipv4.never-default yes
+      nmcli con modify 'eth0' ipv4.never-default yes
       nmcli con reload
-      nmcli con up 'System eth0'
+      nmcli con up 'eth0'
+      sudo sysctl -w net.ipv4.ip_forward=1
+      grep -q "net.ipv4.ip_forward" /etc/sysctl.conf || echo "net.ipv4.ip_forward = 1" | sudo tee -a /etc/sysctl.conf
+      sudo nmcli connection modify "System eth1" +ipv4.routes "0.0.0.0/0 192.168.255.9"
+      sudo nmcli con reload
+      sudo nmcli con up 'System eth1'
     SHELL
   end
 
