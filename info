@@ -1,0 +1,860 @@
+# поднял 7 ВМ вагрантфайлом
+
+***> vagrant up
+Bringing machine 'inetRouter' up with 'virtualbox' provider...
+Bringing machine 'centralRouter' up with 'virtualbox' provider...
+Bringing machine 'centralServer' up with 'virtualbox' provider...
+Bringing machine 'office1Router' up with 'virtualbox' provider...
+Bringing machine 'office1Server' up with 'virtualbox' provider...
+Bringing machine 'office2Router' up with 'virtualbox' provider...
+Bringing machine 'office2Server' up with 'virtualbox' provider...
+==> inetRouter: You assigned a static IP ending in ".1" or ":1" to this machine.
+==> inetRouter: This is very often used by the router and can cause the
+==> inetRouter: network to not work properly. If the network doesn't work
+==> inetRouter: properly, try changing this IP.
+==> inetRouter: Importing base box 'almalinux/9'...
+==> inetRouter: Matching MAC address for NAT networking...
+==> inetRouter: You assigned a static IP ending in ".1" or ":1" to this machine.
+==> inetRouter: This is very often used by the router and can cause the
+==> inetRouter: network to not work properly. If the network doesn't work
+==> inetRouter: properly, try changing this IP.
+==> inetRouter: Checking if box 'almalinux/9' version '1.0.0' is up to date...
+==> inetRouter: Setting the name of the VM: dz10_inetRouter_1789903357468_94869
+==> inetRouter: Clearing any previously set network interfaces...
+==> inetRouter: Preparing network interfaces based on configuration...
+    inetRouter: Adapter 1: nat
+    inetRouter: Adapter 2: intnet
+    inetRouter: Adapter 3: hostonly
+==> inetRouter: Forwarding ports...
+    inetRouter: 22 (guest) => 2222 (host) (adapter 1)
+==> inetRouter: Running 'pre-boot' VM customizations...
+==> inetRouter: Booting VM...
+==> inetRouter: Waiting for machine to boot. This may take a few minutes...
+    inetRouter: SSH address: 127.0.0.1:2222
+    inetRouter: SSH username: vagrant
+    inetRouter: SSH auth method: private key
+    inetRouter:
+    inetRouter: Vagrant insecure key detected. Vagrant will automatically replace
+    inetRouter: this with a newly generated keypair for better security.
+    inetRouter:
+    inetRouter: Inserting generated public key within guest...
+    inetRouter: Removing insecure key from the guest if it's present...
+    inetRouter: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> inetRouter: Machine booted and ready!
+==> inetRouter: Checking for guest additions in VM...
+==> inetRouter: Setting hostname...
+==> inetRouter: Configuring and enabling network interfaces...
+==> inetRouter: Mounting shared folders...
+    inetRouter: *** => /vagrant
+==> inetRouter: Running provisioner: shell...
+    inetRouter: Running: inline script
+    inetRouter: AlmaLinux 9 - AppStream                         1.2 MB/s |  26 MB     00:21
+    inetRouter: AlmaLinux 9 - BaseOS                            1.2 MB/s |  37 MB     00:32
+    inetRouter: AlmaLinux 9 - Extras                             44 kB/s |  22 kB     00:00
+    inetRouter: Last metadata expiration check: 0:00:01 ago on Sun 20 Sep 2026 11:24:38 AM UTC.
+    inetRouter: Dependencies resolved.
+    inetRouter: ================================================================================
+    inetRouter:  Package                   Arch       Version               Repository     Size
+    inetRouter: ================================================================================
+    inetRouter: Installing:
+    inetRouter:  iptables-nft-services     noarch     1.8.10-11.el9_5       appstream      18 k
+    inetRouter: Upgrading:
+    inetRouter:  iptables-libs             x86_64     1.8.10-11.el9_5       baseos        397 k
+    inetRouter: Installing dependencies:
+    inetRouter:  iptables-nft              x86_64     1.8.10-11.el9_5       baseos        187 k
+    inetRouter:  libnftnl                  x86_64     1.2.6-4.el9_4         baseos         87 k
+    inetRouter:
+    inetRouter: Transaction Summary
+    inetRouter: ================================================================================
+    inetRouter: Install  3 Packages
+    inetRouter: Upgrade  1 Package
+    inetRouter:
+    inetRouter: Total download size: 689 k
+    inetRouter: Downloading Packages:
+    inetRouter: (1/4): libnftnl-1.2.6-4.el9_4.x86_64.rpm        1.2 MB/s |  87 kB     00:00
+    inetRouter: (2/4): iptables-nft-1.8.10-11.el9_5.x86_64.rpm  1.9 MB/s | 187 kB     00:00
+    inetRouter: (3/4): iptables-libs-1.8.10-11.el9_5.x86_64.rpm 7.0 MB/s | 397 kB     00:00
+    inetRouter: (4/4): iptables-nft-services-1.8.10-11.el9_5.no  99 kB/s |  18 kB     00:00
+    inetRouter: --------------------------------------------------------------------------------
+    inetRouter: Total                                           629 kB/s | 689 kB     00:01
+    inetRouter: Running transaction check
+    inetRouter: Transaction check succeeded.
+    inetRouter: Running transaction test
+    inetRouter: Transaction test succeeded.
+    inetRouter: Running transaction
+    inetRouter:   Preparing        :                                                        1/1
+    inetRouter:   Upgrading        : iptables-libs-1.8.10-11.el9_5.x86_64                   1/5
+    inetRouter:   Installing       : libnftnl-1.2.6-4.el9_4.x86_64                          2/5
+    inetRouter:   Installing       : iptables-nft-1.8.10-11.el9_5.x86_64                    3/5
+    inetRouter:   Running scriptlet: iptables-nft-1.8.10-11.el9_5.x86_64                    3/5
+    inetRouter:   Installing       : iptables-nft-services-1.8.10-11.el9_5.noarch           4/5
+    inetRouter:   Running scriptlet: iptables-nft-services-1.8.10-11.el9_5.noarch           4/5
+    inetRouter:   Cleanup          : iptables-libs-1.8.10-4.el9_4.x86_64                    5/5
+    inetRouter:   Running scriptlet: iptables-libs-1.8.10-4.el9_4.x86_64                    5/5
+    inetRouter:   Verifying        : iptables-nft-services-1.8.10-11.el9_5.noarch           1/5
+    inetRouter:   Verifying        : iptables-nft-1.8.10-11.el9_5.x86_64                    2/5
+    inetRouter:   Verifying        : libnftnl-1.2.6-4.el9_4.x86_64                          3/5
+    inetRouter:   Verifying        : iptables-libs-1.8.10-11.el9_5.x86_64                   4/5
+    inetRouter:   Verifying        : iptables-libs-1.8.10-4.el9_4.x86_64                    5/5
+    inetRouter:
+    inetRouter: Upgraded:
+    inetRouter:   iptables-libs-1.8.10-11.el9_5.x86_64
+    inetRouter: Installed:
+    inetRouter:   iptables-nft-1.8.10-11.el9_5.x86_64
+    inetRouter:   iptables-nft-services-1.8.10-11.el9_5.noarch
+    inetRouter:   libnftnl-1.2.6-4.el9_4.x86_64
+    inetRouter:
+    inetRouter: Complete!
+    inetRouter: Created symlink /etc/systemd/system/multi-user.target.wants/iptables.service → /usr/lib/systemd/system/iptables.service.
+    inetRouter: net.ipv4.ip_forward = 1
+    inetRouter: net.ipv4.ip_forward = 1
+    inetRouter: # Generated by iptables-save v1.8.10 (nf_tables) on Sun Sep 20 11:24:43 2026
+    inetRouter: *filter
+    inetRouter: :INPUT ACCEPT [0:0]
+    inetRouter: :FORWARD ACCEPT [0:0]
+    inetRouter: :OUTPUT ACCEPT [0:0]
+    inetRouter: -A FORWARD -j ACCEPT
+    inetRouter: COMMIT
+    inetRouter: # Completed on Sun Sep 20 11:24:43 2026
+    inetRouter: # Generated by iptables-save v1.8.10 (nf_tables) on Sun Sep 20 11:24:43 2026
+    inetRouter: *nat
+    inetRouter: :PREROUTING ACCEPT [0:0]
+    inetRouter: :INPUT ACCEPT [0:0]
+    inetRouter: :OUTPUT ACCEPT [0:0]
+    inetRouter: :POSTROUTING ACCEPT [0:0]
+    inetRouter: -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
+    inetRouter: COMMIT
+    inetRouter: # Completed on Sun Sep 20 11:24:43 2026
+    inetRouter: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/5)
+==> centralRouter: You assigned a static IP ending in ".1" or ":1" to this machine.
+==> centralRouter: This is very often used by the router and can cause the
+==> centralRouter: network to not work properly. If the network doesn't work
+==> centralRouter: properly, try changing this IP.
+==> centralRouter: Importing base box 'almalinux/9'...
+==> centralRouter: Matching MAC address for NAT networking...
+==> centralRouter: You assigned a static IP ending in ".1" or ":1" to this machine.
+==> centralRouter: This is very often used by the router and can cause the
+==> centralRouter: network to not work properly. If the network doesn't work
+==> centralRouter: properly, try changing this IP.
+==> centralRouter: Checking if box 'almalinux/9' version '1.0.0' is up to date...
+==> centralRouter: Setting the name of the VM: dz10_centralRouter_1789903490012_73895
+==> centralRouter: Fixed port collision for 22 => 2222. Now on port 2200.
+==> centralRouter: Clearing any previously set network interfaces...
+==> centralRouter: Preparing network interfaces based on configuration...
+    centralRouter: Adapter 1: nat
+    centralRouter: Adapter 2: intnet
+    centralRouter: Adapter 3: hostonly
+    centralRouter: Adapter 4: intnet
+    centralRouter: Adapter 5: intnet
+    centralRouter: Adapter 6: intnet
+    centralRouter: Adapter 7: intnet
+    centralRouter: Adapter 8: intnet
+==> centralRouter: Forwarding ports...
+    centralRouter: 22 (guest) => 2200 (host) (adapter 1)
+==> centralRouter: Running 'pre-boot' VM customizations...
+==> centralRouter: Booting VM...
+==> centralRouter: Waiting for machine to boot. This may take a few minutes...
+    centralRouter: SSH address: 127.0.0.1:2200
+    centralRouter: SSH username: vagrant
+    centralRouter: SSH auth method: private key
+    centralRouter:
+    centralRouter: Vagrant insecure key detected. Vagrant will automatically replace
+    centralRouter: this with a newly generated keypair for better security.
+    centralRouter:
+    centralRouter: Inserting generated public key within guest...
+    centralRouter: Removing insecure key from the guest if it's present...
+    centralRouter: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> centralRouter: Machine booted and ready!
+==> centralRouter: Checking for guest additions in VM...
+==> centralRouter: Setting hostname...
+==> centralRouter: Configuring and enabling network interfaces...
+==> centralRouter: Mounting shared folders...
+    centralRouter: *** => /vagrant
+==> centralRouter: Running provisioner: shell...
+    centralRouter: Running: inline script
+    centralRouter: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/10)
+    centralRouter: net.ipv4.ip_forward = 1
+    centralRouter: net.ipv4.ip_forward = 1
+    centralRouter: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/11)
+    centralRouter: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/12)
+    centralRouter: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/13)
+==> centralServer: Importing base box 'almalinux/9'...
+==> centralServer: Matching MAC address for NAT networking...
+==> centralServer: Checking if box 'almalinux/9' version '1.0.0' is up to date...
+==> centralServer: Setting the name of the VM: dz10_centralServer_1789903560322_72926
+==> centralServer: Fixed port collision for 22 => 2222. Now on port 2201.
+==> centralServer: Clearing any previously set network interfaces...
+==> centralServer: Preparing network interfaces based on configuration...
+    centralServer: Adapter 1: nat
+    centralServer: Adapter 2: intnet
+    centralServer: Adapter 3: hostonly
+==> centralServer: Forwarding ports...
+    centralServer: 22 (guest) => 2201 (host) (adapter 1)
+==> centralServer: Running 'pre-boot' VM customizations...
+==> centralServer: Booting VM...
+==> centralServer: Waiting for machine to boot. This may take a few minutes...
+    centralServer: SSH address: 127.0.0.1:2201
+    centralServer: SSH username: vagrant
+    centralServer: SSH auth method: private key
+    centralServer:
+    centralServer: Vagrant insecure key detected. Vagrant will automatically replace
+    centralServer: this with a newly generated keypair for better security.
+    centralServer:
+    centralServer: Inserting generated public key within guest...
+    centralServer: Removing insecure key from the guest if it's present...
+    centralServer: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> centralServer: Machine booted and ready!
+==> centralServer: Checking for guest additions in VM...
+==> centralServer: Setting hostname...
+==> centralServer: Configuring and enabling network interfaces...
+==> centralServer: Mounting shared folders...
+    centralServer: *** => /vagrant
+==> centralServer: Running provisioner: shell...
+    centralServer: Running: inline script
+    centralServer: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/5)
+    centralServer: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/6)
+==> office1Router: You assigned a static IP ending in ".1" or ":1" to this machine.
+==> office1Router: This is very often used by the router and can cause the
+==> office1Router: network to not work properly. If the network doesn't work
+==> office1Router: properly, try changing this IP.
+==> office1Router: Importing base box 'almalinux/9'...
+==> office1Router: Matching MAC address for NAT networking...
+==> office1Router: You assigned a static IP ending in ".1" or ":1" to this machine.
+==> office1Router: This is very often used by the router and can cause the
+==> office1Router: network to not work properly. If the network doesn't work
+==> office1Router: properly, try changing this IP.
+==> office1Router: Checking if box 'almalinux/9' version '1.0.0' is up to date...
+==> office1Router: Setting the name of the VM: dz10_office1Router_1789903622779_22138
+==> office1Router: Fixed port collision for 22 => 2222. Now on port 2202.
+==> office1Router: Clearing any previously set network interfaces...
+==> office1Router: Preparing network interfaces based on configuration...
+    office1Router: Adapter 1: nat
+    office1Router: Adapter 2: intnet
+    office1Router: Adapter 3: hostonly
+    office1Router: Adapter 4: intnet
+    office1Router: Adapter 5: intnet
+    office1Router: Adapter 6: intnet
+    office1Router: Adapter 7: intnet
+==> office1Router: Forwarding ports...
+    office1Router: 22 (guest) => 2202 (host) (adapter 1)
+==> office1Router: Running 'pre-boot' VM customizations...
+==> office1Router: Booting VM...
+==> office1Router: Waiting for machine to boot. This may take a few minutes...
+    office1Router: SSH address: 127.0.0.1:2202
+    office1Router: SSH username: vagrant
+    office1Router: SSH auth method: private key
+    office1Router:
+    office1Router: Vagrant insecure key detected. Vagrant will automatically replace
+    office1Router: this with a newly generated keypair for better security.
+    office1Router:
+    office1Router: Inserting generated public key within guest...
+    office1Router: Removing insecure key from the guest if it's present...
+    office1Router: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> office1Router: Machine booted and ready!
+==> office1Router: Checking for guest additions in VM...
+==> office1Router: Setting hostname...
+==> office1Router: Configuring and enabling network interfaces...
+==> office1Router: Mounting shared folders...
+    office1Router: *** => /vagrant
+==> office1Router: Running provisioner: shell...
+    office1Router: Running: inline script
+    office1Router: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/9)
+    office1Router: net.ipv4.ip_forward = 1
+    office1Router: net.ipv4.ip_forward = 1
+    office1Router: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/10)
+==> office1Server: Importing base box 'almalinux/9'...
+==> office1Server: Matching MAC address for NAT networking...
+==> office1Server: Checking if box 'almalinux/9' version '1.0.0' is up to date...
+==> office1Server: Setting the name of the VM: dz10_office1Server_1789903690742_69219
+==> office1Server: Fixed port collision for 22 => 2222. Now on port 2203.
+==> office1Server: Clearing any previously set network interfaces...
+==> office1Server: Preparing network interfaces based on configuration...
+    office1Server: Adapter 1: nat
+    office1Server: Adapter 2: intnet
+    office1Server: Adapter 3: hostonly
+==> office1Server: Forwarding ports...
+    office1Server: 22 (guest) => 2203 (host) (adapter 1)
+==> office1Server: Running 'pre-boot' VM customizations...
+==> office1Server: Booting VM...
+==> office1Server: Waiting for machine to boot. This may take a few minutes...
+    office1Server: SSH address: 127.0.0.1:2203
+    office1Server: SSH username: vagrant
+    office1Server: SSH auth method: private key
+    office1Server:
+    office1Server: Vagrant insecure key detected. Vagrant will automatically replace
+    office1Server: this with a newly generated keypair for better security.
+    office1Server:
+    office1Server: Inserting generated public key within guest...
+    office1Server: Removing insecure key from the guest if it's present...
+    office1Server: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> office1Server: Machine booted and ready!
+==> office1Server: Checking for guest additions in VM...
+==> office1Server: Setting hostname...
+==> office1Server: Configuring and enabling network interfaces...
+==> office1Server: Mounting shared folders...
+    office1Server: *** => /vagrant
+==> office1Server: Running provisioner: shell...
+    office1Server: Running: inline script
+    office1Server: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/5)
+    office1Server: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/6)
+==> office2Router: You assigned a static IP ending in ".1" or ":1" to this machine.
+==> office2Router: This is very often used by the router and can cause the
+==> office2Router: network to not work properly. If the network doesn't work
+==> office2Router: properly, try changing this IP.
+==> office2Router: Importing base box 'almalinux/9'...
+==> office2Router: Matching MAC address for NAT networking...
+==> office2Router: You assigned a static IP ending in ".1" or ":1" to this machine.
+==> office2Router: This is very often used by the router and can cause the
+==> office2Router: network to not work properly. If the network doesn't work
+==> office2Router: properly, try changing this IP.
+==> office2Router: Checking if box 'almalinux/9' version '1.0.0' is up to date...
+==> office2Router: Setting the name of the VM: dz10_office2Router_1789903753226_53432
+==> office2Router: Fixed port collision for 22 => 2222. Now on port 2204.
+==> office2Router: Clearing any previously set network interfaces...
+==> office2Router: Preparing network interfaces based on configuration...
+    office2Router: Adapter 1: nat
+    office2Router: Adapter 2: intnet
+    office2Router: Adapter 3: hostonly
+    office2Router: Adapter 4: intnet
+    office2Router: Adapter 5: intnet
+    office2Router: Adapter 6: intnet
+==> office2Router: Forwarding ports...
+    office2Router: 22 (guest) => 2204 (host) (adapter 1)
+==> office2Router: Running 'pre-boot' VM customizations...
+==> office2Router: Booting VM...
+==> office2Router: Waiting for machine to boot. This may take a few minutes...
+    office2Router: SSH address: 127.0.0.1:2204
+    office2Router: SSH username: vagrant
+    office2Router: SSH auth method: private key
+    office2Router:
+    office2Router: Vagrant insecure key detected. Vagrant will automatically replace
+    office2Router: this with a newly generated keypair for better security.
+    office2Router:
+    office2Router: Inserting generated public key within guest...
+    office2Router: Removing insecure key from the guest if it's present...
+    office2Router: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> office2Router: Machine booted and ready!
+==> office2Router: Checking for guest additions in VM...
+==> office2Router: Setting hostname...
+==> office2Router: Configuring and enabling network interfaces...
+==> office2Router: Mounting shared folders...
+    office2Router: *** => /vagrant
+==> office2Router: Running provisioner: shell...
+    office2Router: Running: inline script
+    office2Router: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/8)
+    office2Router: net.ipv4.ip_forward = 1
+    office2Router: net.ipv4.ip_forward = 1
+    office2Router: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/9)
+==> office2Server: Importing base box 'almalinux/9'...
+==> office2Server: Matching MAC address for NAT networking...
+==> office2Server: Checking if box 'almalinux/9' version '1.0.0' is up to date...
+==> office2Server: Setting the name of the VM: dz10_office2Server_1789903820623_92741
+==> office2Server: Fixed port collision for 22 => 2222. Now on port 2205.
+==> office2Server: Clearing any previously set network interfaces...
+==> office2Server: Preparing network interfaces based on configuration...
+    office2Server: Adapter 1: nat
+    office2Server: Adapter 2: intnet
+    office2Server: Adapter 3: hostonly
+==> office2Server: Forwarding ports...
+    office2Server: 22 (guest) => 2205 (host) (adapter 1)
+==> office2Server: Running 'pre-boot' VM customizations...
+==> office2Server: Booting VM...
+==> office2Server: Waiting for machine to boot. This may take a few minutes...
+    office2Server: SSH address: 127.0.0.1:2205
+    office2Server: SSH username: vagrant
+    office2Server: SSH auth method: private key
+    office2Server:
+    office2Server: Vagrant insecure key detected. Vagrant will automatically replace
+    office2Server: this with a newly generated keypair for better security.
+    office2Server:
+    office2Server: Inserting generated public key within guest...
+    office2Server: Removing insecure key from the guest if it's present...
+    office2Server: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> office2Server: Machine booted and ready!
+==> office2Server: Checking for guest additions in VM...
+==> office2Server: Setting hostname...
+==> office2Server: Configuring and enabling network interfaces...
+==> office2Server: Mounting shared folders...
+    office2Server: *** => /vagrant
+==> office2Server: Running provisioner: shell...
+    office2Server: Running: inline script
+    office2Server: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/5)
+    office2Server: Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/6)
+
+# все ВМ запустились, сетевые взаимодействия прописались.
+
+# что надо проверить на ВМ:
+
+# 1. для централСервер, офис1Сервер, офис2Сервер проверить пинг 8.8.8.8.
+# Если пинг идёт, значит пакеты уходят во внешнюю сеть интернет и возвращаются.
+
+# 2. После с каждой из ВМ из п.1 сделать трэйсраут до 8.8.8.8, чтоб проверить маршруты.
+# Если маршруты идут через инетСервер, то значит работают маршруты настроенные по схеме,
+# а не просто свободный выход в Интернет через НАТ самой ВМ или как-то еще.
+
+# 3. для централСервер сделать пинг до офис1Сервер и офис2Сервер.
+# Это докажет то, что централСервер видит удалённые сети из офиса1 и офиса2.
+
+# 4. для централСервер проверить трэйсраут до офис1Сервер и до офис2Сервер.
+# Это покажет, что используются настроенные пути согласно схеме из ДЗ, а не прямая видимость.
+
+# 5 для офис1Сервер сделать проверки из п.3 и п.4 на централСервер и офис2Сервер.
+
+# 6. для офис2Сервер сделать проверки из п.3 и п.4 на централСервер и офис1Сервер.
+
+# 7. для полноты картины зайду дополнительно на каждый роутер, чтоб посмотреть таблицу
+# маршрутов. Это дополнительные проверки, чтобы было. Т.к. если бы роутеры были настроены
+# неправильно, то проверки на серверах показали бы это.
+
+####################################
+####################################
+##                                ##
+##  проверки на ВМ centralServer  ##
+##                                ##
+####################################
+####################################
+
+# подключение к ВМ centralServer
+vagrant ssh centralServer
+
+# проверка пинга до 8.8.8.8
+[vagrant@centralServer ~]$ ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=253 time=22.7 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=253 time=27.5 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=253 time=28.9 ms
+^C
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2006ms
+rtt min/avg/max/mdev = 22.658/26.359/28.900/2.677 ms
+
+# установка пакета traceroute
+[vagrant@centralServer ~]$ sudo dnf install -y traceroute
+Last metadata expiration check: 0:04:34 ago on Sun 20 Sep 2026 12:23:55 PM UTC.
+Dependencies resolved.
+============================================================================
+ Package           Architecture  Version                Repository     Size
+============================================================================
+Installing:
+ traceroute        x86_64        3:2.1.1-1.el9          baseos         56 k
+
+Transaction Summary
+============================================================================
+Install  1 Package
+
+Total download size: 56 k
+Installed size: 107 k
+Downloading Packages:
+traceroute-2.1.1-1.el9.x86_64.rpm           1.5 MB/s |  56 kB     00:00
+----------------------------------------------------------------------------
+Total                                        92 kB/s |  56 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                    1/1
+  Installing       : traceroute-3:2.1.1-1.el9.x86_64                    1/1
+  Running scriptlet: traceroute-3:2.1.1-1.el9.x86_64                    1/1
+  Verifying        : traceroute-3:2.1.1-1.el9.x86_64                    1/1
+
+Installed:
+  traceroute-3:2.1.1-1.el9.x86_64
+
+Complete!
+
+# проверка пути следования пакета до 8.8.8.8. Первый пункт - это интерфейс на ВМ centralRouter, второй - интерфейс на ВМ inetRouter. Все остальные сервера до 8.8.8.8 скрывают свои ip.
+[vagrant@centralServer ~]$ traceroute 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.0.1)  5.178 ms  3.186 ms  2.782 ms
+ 2  192.168.255.1 (192.168.255.1)  31.499 ms  31.052 ms  30.881 ms
+ 3  * * *
+ 4  * * *
+ 5  * * *
+ 6  * * *
+ 7  * * *
+ 8  * * *
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+[vagrant@centralServer ~]$
+
+# проверки пинга и путей движения пакетов до ВМ office1Server и office2Server
+[vagrant@centralServer ~]$ ping 192.168.2.130
+PING 192.168.2.130 (192.168.2.130) 56(84) bytes of data.
+64 bytes from 192.168.2.130: icmp_seq=1 ttl=62 time=4.19 ms
+64 bytes from 192.168.2.130: icmp_seq=2 ttl=62 time=6.22 ms
+64 bytes from 192.168.2.130: icmp_seq=3 ttl=62 time=5.80 ms
+^C
+--- 192.168.2.130 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2014ms
+rtt min/avg/max/mdev = 4.186/5.401/6.219/0.876 ms
+[vagrant@centralServer ~]$ traceroute 192.168.2.130
+traceroute to 192.168.2.130 (192.168.2.130), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.0.1)  1.034 ms  2.250 ms  1.369 ms
+ 2  192.168.255.10 (192.168.255.10)  2.139 ms  1.724 ms  1.884 ms
+ 3  192.168.2.130 (192.168.2.130)  4.042 ms  3.735 ms  5.207 ms
+[vagrant@centralServer ~]$ ping 192.168.1.2
+PING 192.168.1.2 (192.168.1.2) 56(84) bytes of data.
+64 bytes from 192.168.1.2: icmp_seq=1 ttl=62 time=3.50 ms
+64 bytes from 192.168.1.2: icmp_seq=2 ttl=62 time=3.18 ms
+64 bytes from 192.168.1.2: icmp_seq=3 ttl=62 time=3.78 ms
+^C
+--- 192.168.1.2 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 3.179/3.486/3.778/0.244 ms
+[vagrant@centralServer ~]$ traceroute 192.168.1.2
+traceroute to 192.168.1.2 (192.168.1.2), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.0.1)  6.227 ms  6.076 ms  4.609 ms
+ 2  192.168.255.6 (192.168.255.6)  28.072 ms  28.148 ms  28.044 ms
+ 3  192.168.1.2 (192.168.1.2)  5.838 ms  6.682 ms  6.574 ms
+[vagrant@centralServer ~]$
+
+####################################
+####################################
+##                                ##
+##  проверки на ВМ office1Server  ##
+##                                ##
+####################################
+####################################
+
+# подключение к ВМ office1Server
+vagrant ssh office1Server
+
+# проверка пинга до 8.8.8.8
+[vagrant@office1Server ~]$ ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=252 time=18.7 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=252 time=23.2 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=252 time=25.7 ms
+^C
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 18.745/22.536/25.712/2.877 ms
+
+# установка пакета traceroute
+[vagrant@office1Server ~]$ sudo dnf install -y traceroute
+Last metadata expiration check: 0:50:43 ago on Sun 20 Sep 2026 12:27:27 PM UTC.
+Dependencies resolved.
+============================================================================
+ Package           Architecture  Version                Repository     Size
+============================================================================
+Installing:
+ traceroute        x86_64        3:2.1.1-1.el9          baseos         56 k
+
+Transaction Summary
+============================================================================
+Install  1 Package
+
+Total download size: 56 k
+Installed size: 107 k
+Downloading Packages:
+traceroute-2.1.1-1.el9.x86_64.rpm           1.3 MB/s |  56 kB     00:00
+----------------------------------------------------------------------------
+Total                                       110 kB/s |  56 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                    1/1
+  Installing       : traceroute-3:2.1.1-1.el9.x86_64                    1/1
+  Running scriptlet: traceroute-3:2.1.1-1.el9.x86_64                    1/1
+  Verifying        : traceroute-3:2.1.1-1.el9.x86_64                    1/1
+
+Installed:
+  traceroute-3:2.1.1-1.el9.x86_64
+
+Complete!
+
+# проверка пути следования пакета до 8.8.8.8. Первый пункт - это интерфейс на ВМ ofice1Router, второй - интерфейс на ВС centralRouter, третий - ВМ inetRouter. Все остальные сервера до 8.8.8.8 скрывают свои ip.
+[vagrant@office1Server ~]$ traceroute 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.2.129)  0.942 ms  0.655 ms  0.478 ms
+ 2  192.168.255.9 (192.168.255.9)  1.703 ms  1.590 ms  1.911 ms
+ 3  192.168.255.1 (192.168.255.1)  3.220 ms  4.804 ms  3.895 ms
+ 4  * * *
+ 5  * * *
+ 6  * * *
+ 7  * * *
+ 8  * * *
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+
+# проверки пинга и путей движения пакетов до ВМ centalServer и office2Server
+[vagrant@office1Server ~]$ ping 192.168.1.2
+PING 192.168.1.2 (192.168.1.2) 56(84) bytes of data.
+64 bytes from 192.168.1.2: icmp_seq=1 ttl=61 time=4.21 ms
+64 bytes from 192.168.1.2: icmp_seq=2 ttl=61 time=7.86 ms
+64 bytes from 192.168.1.2: icmp_seq=3 ttl=61 time=8.96 ms
+^C
+--- 192.168.1.2 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 4.212/7.012/8.963/2.030 ms
+[vagrant@office1Server ~]$ traceroute 192.168.1.2
+traceroute to 192.168.1.2 (192.168.1.2), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.2.129)  1.848 ms  0.949 ms  1.052 ms
+ 2  192.168.255.9 (192.168.255.9)  3.358 ms  2.614 ms  4.217 ms
+ 3  192.168.255.6 (192.168.255.6)  4.968 ms  3.530 ms  5.065 ms
+ 4  192.168.1.2 (192.168.1.2)  5.477 ms  4.917 ms  6.814 ms
+[vagrant@office1Server ~]$ ping 192.168.0.2
+PING 192.168.0.2 (192.168.0.2) 56(84) bytes of data.
+64 bytes from 192.168.0.2: icmp_seq=1 ttl=62 time=4.28 ms
+64 bytes from 192.168.0.2: icmp_seq=2 ttl=62 time=6.16 ms
+64 bytes from 192.168.0.2: icmp_seq=3 ttl=62 time=5.03 ms
+^C
+--- 192.168.0.2 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2005ms
+rtt min/avg/max/mdev = 4.277/5.157/6.163/0.775 ms
+[vagrant@office1Server ~]$ traceroute 192.168.0.2
+traceroute to 192.168.0.2 (192.168.0.2), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.2.129)  1.068 ms  1.027 ms  0.905 ms
+ 2  192.168.255.9 (192.168.255.9)  1.865 ms  2.201 ms  1.843 ms
+ 3  192.168.0.2 (192.168.0.2)  4.091 ms  3.127 ms  3.070 ms
+
+####################################
+####################################
+##                                ##
+##  проверки на ВМ office2Server  ##
+##                                ##
+####################################
+####################################
+
+# подключение к ВМ office2Server
+vagrant ssh office2Server
+
+# проверка пинга до 8.8.8.8
+[vagrant@office2Server ~]$ ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=252 time=18.5 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=252 time=21.2 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=252 time=18.9 ms
+^C
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 18.548/19.549/21.194/1.172 ms
+
+# установка пакета traceroute
+[vagrant@office2Server ~]$ sudo dnf install -y traceroute
+Last metadata expiration check: 1:28:29 ago on Sun 20 Sep 2026 11:58:02 AM UTC.
+Dependencies resolved.
+============================================================================
+ Package           Architecture  Version                Repository     Size
+============================================================================
+Installing:
+ traceroute        x86_64        3:2.1.1-1.el9          baseos         56 k
+
+Transaction Summary
+============================================================================
+Install  1 Package
+
+Total download size: 56 k
+Installed size: 107 k
+Downloading Packages:
+traceroute-2.1.1-1.el9.x86_64.rpm           704 kB/s |  56 kB     00:00
+----------------------------------------------------------------------------
+Total                                       108 kB/s |  56 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                    1/1
+  Installing       : traceroute-3:2.1.1-1.el9.x86_64                    1/1
+  Running scriptlet: traceroute-3:2.1.1-1.el9.x86_64                    1/1
+  Verifying        : traceroute-3:2.1.1-1.el9.x86_64                    1/1
+
+Installed:
+  traceroute-3:2.1.1-1.el9.x86_64
+
+Complete!
+
+# проверка пути следования пакета до 8.8.8.8. Первый пункт - это интерфейс на ВМ ofice2Router, второй - интерфейс на ВС centralRouter, третий - ВМ inetRouter. Все остальные сервера до 8.8.8.8 скрывают свои ip.
+[vagrant@office2Server ~]$ traceroute 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.1.1)  0.996 ms  1.972 ms  0.689 ms
+ 2  192.168.255.5 (192.168.255.5)  2.241 ms  1.941 ms  1.684 ms
+ 3  192.168.255.1 (192.168.255.1)  3.164 ms  2.970 ms  3.422 ms
+ 4  * * *
+ 5  * * *
+ 6  * * *
+ 7  * * *
+ 8  * * *
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+
+# проверки пинга и путей движения пакетов до ВМ centalServer и office1Server[vagrant@office2Server ~]$ ping 192.168.0.2
+PING 192.168.0.2 (192.168.0.2) 56(84) bytes of data.
+64 bytes from 192.168.0.2: icmp_seq=1 ttl=62 time=2.93 ms
+64 bytes from 192.168.0.2: icmp_seq=2 ttl=62 time=5.12 ms
+64 bytes from 192.168.0.2: icmp_seq=3 ttl=62 time=6.37 ms
+^C
+--- 192.168.0.2 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2006ms
+rtt min/avg/max/mdev = 2.926/4.804/6.370/1.423 ms
+[vagrant@office2Server ~]$ traceroute 192.168.0.2
+traceroute to 192.168.0.2 (192.168.0.2), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.1.1)  1.010 ms  1.981 ms  1.285 ms
+ 2  192.168.255.5 (192.168.255.5)  4.352 ms  2.663 ms  3.178 ms
+ 3  192.168.0.2 (192.168.0.2)  3.786 ms  5.088 ms  4.712 ms
+[vagrant@office2Server ~]$ ping 192.168.2.1
+PING 192.168.2.1 (192.168.2.1) 56(84) bytes of data.
+64 bytes from 192.168.2.1: icmp_seq=1 ttl=62 time=3.38 ms
+64 bytes from 192.168.2.1: icmp_seq=2 ttl=62 time=4.51 ms
+64 bytes from 192.168.2.1: icmp_seq=3 ttl=62 time=2.56 ms
+^C
+--- 192.168.2.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2007ms
+rtt min/avg/max/mdev = 2.559/3.484/4.511/0.800 ms
+[vagrant@office2Server ~]$ traceroute 192.168.2.1
+traceroute to 192.168.2.1 (192.168.2.1), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.1.1)  0.611 ms  0.520 ms  0.801 ms
+ 2  192.168.255.5 (192.168.255.5)  2.163 ms  2.096 ms  1.866 ms
+ 3  192.168.2.1 (192.168.2.1)  3.189 ms  3.524 ms  3.441 ms
+[vagrant@office2Server ~]$
+
+#################################
+#################################
+##                             ##
+##  проверки на ВМ inetRouter  ##
+##                             ##
+#################################
+#################################
+
+# подключение по ssh
+vagrant ssh inetRouter
+
+# просмотр таблицы маршрутизации
+[vagrant@inetRouter ~]$ ip route
+default via 10.0.2.2 dev eth0 proto dhcp src 10.0.2.15 metric 100
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 metric 100
+192.168.0.0/16 via 192.168.255.2 dev eth1 proto static metric 103
+192.168.51.0/24 dev eth2 proto kernel scope link src 192.168.51.10 metric 102
+192.168.255.0/30 dev eth1 proto kernel scope link src 192.168.255.1 metric 103
+
+####################################
+####################################
+##                                ##
+##  проверки на ВМ centralRouter  ##
+##                                ##
+####################################
+####################################
+
+# подключение по ssh
+vagrant ssh centralRouter
+
+# просмотр таблицы маршрутизации
+[vagrant@centralRouter ~]$ ip route
+default via 192.168.255.1 dev eth1 proto static metric 109
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 metric 108
+192.168.0.0/28 dev eth3 proto kernel scope link src 192.168.0.1 metric 103
+192.168.0.32/28 dev eth6 proto kernel scope link src 192.168.0.33 metric 106
+192.168.0.64/26 dev eth7 proto kernel scope link src 192.168.0.65 metric 107
+192.168.1.0/24 via 192.168.255.6 dev eth5 proto static metric 111
+192.168.2.0/24 via 192.168.255.10 dev eth4 proto static metric 110
+192.168.52.0/24 dev eth2 proto kernel scope link src 192.168.52.10 metric 102
+192.168.255.0/30 dev eth1 proto kernel scope link src 192.168.255.2 metric 109
+192.168.255.4/30 dev eth5 proto kernel scope link src 192.168.255.5 metric 111
+192.168.255.8/30 dev eth4 proto kernel scope link src 192.168.255.9 metric 110
+
+####################################
+####################################
+##                                ##
+##  проверки на ВМ office1Router  ##
+##                                ##
+####################################
+####################################
+
+# подключение по ssh
+vagrant ssh office1Router
+
+# просмотр таблицы маршрутизации
+[vagrant@office1Router ~]$ ip route
+default via 192.168.255.9 dev eth1 proto static metric 108
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 metric 107
+192.168.2.0/26 dev eth3 proto kernel scope link src 192.168.2.1 metric 103
+192.168.2.64/28 dev eth4 proto kernel scope link src 192.168.2.65 metric 104
+192.168.2.128/26 dev eth5 proto kernel scope link src 192.168.2.129 metric 105
+192.168.2.192/26 dev eth6 proto kernel scope link src 192.168.2.193 metric 106
+192.168.54.0/24 dev eth2 proto kernel scope link src 192.168.54.10 metric 102
+192.168.255.8/30 dev eth1 proto kernel scope link src 192.168.255.10 metric 108
+
+####################################
+####################################
+##                                ##
+##  проверки на ВМ office2Router  ##
+##                                ##
+####################################
+####################################
+
+# подключение по ssh
+vagrant ssh office2Router
+
+# просмотр таблицы маршрутизации
+[vagrant@office2Router ~]$ ip route
+default via 192.168.255.5 dev eth1 proto static metric 107
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 metric 106
+192.168.1.0/25 dev eth3 proto kernel scope link src 192.168.1.1 metric 103
+192.168.1.128/26 dev eth4 proto kernel scope link src 192.168.1.129 metric 104
+192.168.1.192/26 dev eth5 proto kernel scope link src 192.168.1.193 metric 105
+192.168.56.0/24 dev eth2 proto kernel scope link src 192.168.56.10 metric 102
+192.168.255.4/30 dev eth1 proto kernel scope link src 192.168.255.6 metric 107
