@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     pxeser.vm.box = "ubuntu/jammy64"
     pxeser.vm.box_version = "1.0.0"
     pxeser.vm.hostname = "pxeser"
- 
+
     pxeser.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.cpus = 2
