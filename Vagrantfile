@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     pxeser.vm.box = "ubuntu/jammy64"
     pxeser.vm.box_version = "1.0.0"
     pxeser.vm.hostname = "pxeser"
-    pxecli.vm.disk :disk, size: "50GB", primary: true
+ 
     pxeser.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.cpus = 2
@@ -49,6 +49,7 @@ Vagrant.configure("2") do |config|
     pxecli.vm.box = "ubuntu/jammy64"
     pxecli.vm.box_version = "1.0.0"
     pxecli.vm.hostname = "pxecli"
+    pxecli.vm.disk :disk, size: "50GB", primary: true
     pxecli.vm.provider "virtualbox" do |v|
       v.memory = 8192
       v.cpus = 2
