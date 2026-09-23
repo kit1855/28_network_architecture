@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
     pxecli.vm.box_version = "1.0.0"
     pxecli.vm.hostname = "pxecli"
     pxecli.vm.provider "virtualbox" do |v|
-      v.memory = 4096
+      v.memory = 8192
       v.cpus = 2
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
