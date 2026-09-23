@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
     pxeser.vm.box = "ubuntu/jammy64"
     pxeser.vm.box_version = "1.0.0"
     pxeser.vm.hostname = "pxeser"
+    pxecli.vm.disk :disk, size: "50GB", primary: true
     pxeser.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.cpus = 2
@@ -32,6 +33,12 @@ Vagrant.configure("2") do |config|
       run: "always",
       inline: <<-SHELL
         echo "pxeser is up"
+        sudo ufw allow 67/udp       # открываю порт для DHCP сервера
+        sudo ufw allow 69/udp       # открываю порт для TFTP
+        sudo ufw allow 80/tcp       # открываю порт для apache2
+        sudo apt update
+        sudo apt install -y dnsmasq apache2 syslinux
+
       SHELL
   end
 
@@ -63,6 +70,19 @@ Vagrant.configure("2") do |config|
 
     # Внутренняя сеть PXE — та же, что у сервера
     pxecli.vm.network "private_network", ip: "10.0.0.21", adapter: 3, netmask: "255.255.255.0", virtualbox__intnet: "pxenet"
+
+    pxeser.vm.provision "shell",
+      run: "always",
+      inline: <<-SHELL
+        echo "pxecli is up"
+        sudo ufw allow 68/udp       # открываю порт для DHCP клиента
+        #sudo ufw allow 69/udp       # открываю порт для TFTP
+        #sudo ufw allow 80/tcp       # открываю порт для apache2
+        #sudo apt update
+        #sudo apt install -y dnsmasq apache2 syslinux
+
+      SHELL
+
   end
 
 end
