@@ -37,6 +37,7 @@ Vagrant.configure("2") do |config|
         sudo ufw allow 67/udp       # открываю порт для DHCP сервера
         sudo ufw allow 69/udp       # открываю порт для TFTP
         sudo ufw allow 80/tcp       # открываю порт для apache2
+        sudo ufw --force enable
         sudo apt update
         sudo apt install -y dnsmasq apache2 syslinux
 
