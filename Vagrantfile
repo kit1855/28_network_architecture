@@ -33,6 +33,7 @@ Vagrant.configure("2") do |config|
       run: "always",
       inline: <<-SHELL
         echo "pxeser is up"
+        sudo ufw allow 22/tcp       # открываю порт для SSH
         sudo ufw allow 67/udp       # открываю порт для DHCP сервера
         sudo ufw allow 69/udp       # открываю порт для TFTP
         sudo ufw allow 80/tcp       # открываю порт для apache2
