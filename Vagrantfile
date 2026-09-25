@@ -5,7 +5,7 @@
 ENV['VAGRANT_SERVER_URL'] = 'https://vagrant.elab.pro'
 
 Vagrant.configure("2") do |config|
-
+  config.vm.box_check_update = false
   # ============================================
   # 1. pxeser (Ubuntu 22.04)
   # ============================================
