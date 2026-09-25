@@ -40,7 +40,17 @@ Vagrant.configure("2") do |config|
         sudo ufw --force enable
         sudo apt update
         sudo apt install -y dnsmasq apache2 syslinux
-
+        sudo tee /etc/dnsmasq.d/pxe.conf > /dev/null <<'EOF'
+        interface=enp0s8
+        bind-interfaces
+        port=0
+        dhcp-range=enp0s8,10.0.0.100,10.0.0.120,255.255.255.0,12h
+        dhcp-boot=pxelinux.0
+        enable-tftp
+        tftp-root=/srv/tftp/amd64
+        EOF
+        sudo mkdir -p /srv/tftp/amd64
+        sudo systemctl restart dnsmasq
       SHELL
   end
 
