@@ -41,16 +41,28 @@ Vagrant.configure("2") do |config|
         sudo apt update
         sudo apt install -y dnsmasq apache2 syslinux
         sudo tee /etc/dnsmasq.d/pxe.conf > /dev/null <<'EOF'
-        interface=enp0s8
-        bind-interfaces
-        port=0
-        dhcp-range=enp0s8,10.0.0.100,10.0.0.120,255.255.255.0,12h
-        dhcp-boot=pxelinux.0
-        enable-tftp
-        tftp-root=/srv/tftp/amd64
-        EOF
-        sudo mkdir -p /srv/tftp/amd64
-        sudo systemctl restart dnsmasq
+interface=enp0s8
+bind-interfaces
+port=0
+dhcp-range=enp0s8,10.0.0.100,10.0.0.120,255.255.255.0,12h
+dhcp-boot=pxelinux.0
+enable-tftp
+tftp-root=/srv/tftp/amd64
+EOF
+
+    # Копируем ISO, если его ещё нет
+    if [ ! -f /srv/images/ubuntu-24.04.4-live-server-amd64.iso ]; then
+      sudo mkdir -p /srv/images
+      sudo cp /vagrant/images/ubuntu-24.04.4-live-server-amd64.iso /srv/images/
+    fi
+
+    # Распаковываем netboot, если ещё не распакован
+    if [ ! -f /srv/tftp/amd64/pxelinux.0 ]; then
+      sudo mkdir -p /srv/tftp/amd64
+      sudo tar -xzvf /vagrant/images/ubuntu-24.04.3-netboot-amd64.tar.gz -C /srv/tftp/
+    fi
+
+      sudo systemctl restart dnsmasq
       SHELL
   end
 
