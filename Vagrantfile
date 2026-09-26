@@ -60,15 +60,14 @@ EOF
       echo "=== ISO уже на месте, копирование не требуется ==="
     fi
 
-    echo "=== Начинаю распаковку netboot-архива ==="
-    # Распаковываем netboot, если ещё не распакован
-    if [ ! -f /srv/tftp/amd64/pxelinux.0 ]; then
-      sudo mkdir -p /srv/tftp/amd64
-      sudo tar -xzvf /vagrant/images/ubuntu-24.04.3-netboot-amd64.tar.gz -C /srv/tftp/
-      echo "=== Netboot распакован ==="
-    else
-      echo "=== Netboot уже распакован, пропускаю ==="
-    fi
+sudo mkdir -p /srv/tftp/amd64/pxelinux.cfg
+sudo tee /srv/tftp/amd64/pxelinux.cfg/default > /dev/null <<'EOF'
+DEFAULT install
+LABEL install
+    KERNEL linux
+    INITRD initrd
+    APPEND root=/dev/ram0 ramdisk_size=8388608 ip=dhcp url=http://10.0.0.20/srv/images/ubuntu-24.04.4-live-server-amd64.iso autoinstall cloud-config-url=/dev/null ds=nocloud-net;s=http://10.0.0.20/srv/ks/
+EOF
 
       sudo systemctl restart dnsmasq
       SHELL
