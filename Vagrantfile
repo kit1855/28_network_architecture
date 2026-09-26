@@ -112,7 +112,7 @@ EOF
     fi 
 
     sudo mkdir -p /srv/tftp/amd64
-    sudo cp /usr/lib/syslinux/modules/bios/pxelinux.0 /srv/tftp/amd64/
+    sudo cp /usr/lib/PXELINUX/pxelinux.0 /srv/tftp/amd64/
     sudo cp /usr/lib/syslinux/modules/bios/ldlinux.c32 /srv/tftp/amd64/
 
     sudo mkdir -p /mnt/iso
