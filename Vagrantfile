@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
         sudo ufw allow 80/tcp       # открываю порт для apache2
         sudo ufw --force enable
         sudo apt update
-        sudo apt install -y dnsmasq apache2 syslinux
+        sudo apt install -y dnsmasq apache2 syslinux pxelinux
 
 sudo mkdir -p /srv/ks
 sudo tee /etc/apache2/sites-available/ks-server.conf > /dev/null <<'EOF'
