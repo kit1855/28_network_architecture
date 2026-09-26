@@ -40,6 +40,56 @@ Vagrant.configure("2") do |config|
         sudo ufw --force enable
         sudo apt update
         sudo apt install -y dnsmasq apache2 syslinux
+
+sudo mkdir -p /srv/ks
+sudo tee /etc/apache2/sites-available/ks-server.conf > /dev/null <<'EOF'
+<VirtualHost 10.0.0.20:80>
+    DocumentRoot /
+    <Directory /srv/images>
+        Options Indexes MultiViews
+        AllowOverride All
+        Require all granted
+    </Directory>
+    <Directory /srv/ks>
+        Options Indexes MultiViews
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+EOF
+sudo a2ensite ks-server.conf
+sudo systemctl reload apache2
+
+sudo tee /srv/ks/user-data > /dev/null <<'EOF'
+#cloud-config
+autoinstall:
+  version: 1
+  apt:
+    primary:
+      - arches: [amd64, i386]
+        uri: http://archive.ubuntu.com/ubuntu
+  identity:
+    hostname: ubuntu-pxe
+    username: otus
+    password: "$6$sJgo6Hg5zXBwkkI8$btreOWaB5FxKhajagWR49XM4EAOfO/Dr5bMrLOkGe3KkMYdsh7T3MU5mYwY2TIMJpVKckAwnZFs2ItUJ1abOZ."
+  keyboard:
+    layout: us
+  locale: en_US.UTF-8
+  network:
+    version: 2
+    ethernets:
+      enp0s3:
+        dhcp4: true
+      enp0s8:
+        dhcp4: true
+  ssh:
+    install-server: true
+    allow-pw: true
+  updates: security
+EOF
+sudo touch /srv/ks/meta-data
+
+
         sudo tee /etc/dnsmasq.d/pxe.conf > /dev/null <<'EOF'
 interface=enp0s8
 bind-interfaces
@@ -49,6 +99,16 @@ dhcp-boot=pxelinux.0
 enable-tftp
 tftp-root=/srv/tftp/amd64
 EOF
+
+sudo mkdir -p /srv/tftp/amd64
+sudo cp /usr/lib/syslinux/modules/bios/pxelinux.0 /srv/tftp/amd64/
+sudo cp /usr/lib/syslinux/modules/bios/ldlinux.c32 /srv/tftp/amd64/
+
+sudo mkdir -p /mnt/iso
+sudo mount -o loop /srv/images/ubuntu-24.04.4-live-server-amd64.iso /mnt/iso
+sudo cp /mnt/iso/casper/vmlinuz /srv/tftp/amd64/linux
+sudo cp /mnt/iso/casper/initrd /srv/tftp/amd64/initrd
+sudo umount /mnt/iso
 
     echo "=== Начинаю копирование ISO (3.17 ГБ). Это может занять 1-3 минуты ==="
     # Копируем ISO, если его ещё нет
@@ -68,8 +128,8 @@ LABEL install
     INITRD initrd
     APPEND root=/dev/ram0 ramdisk_size=8388608 ip=dhcp url=http://10.0.0.20/srv/images/ubuntu-24.04.4-live-server-amd64.iso autoinstall cloud-config-url=/dev/null ds=nocloud-net;s=http://10.0.0.20/srv/ks/
 EOF
-
       sudo systemctl restart dnsmasq
+      sudo systemctl restart apache2
       SHELL
   end
 
