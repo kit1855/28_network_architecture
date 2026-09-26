@@ -71,7 +71,7 @@ autoinstall:
   identity:
     hostname: ubuntu-pxe
     username: otus
-    password: "$6$sJgo6Hg5zXBwkkI8$btreOWaB5FxKhajagWR49XM4EAOfO/Dr5bMrLOkGe3KkMYdsh7T3MU5mYwY2TIMJpVKckAwnZFs2ItUJ1abOZ."
+    password: "$6$xyz$73Q3Z.l5kN5BNAGMmP5IKozhqw3Zhj8bqQuJy3.Wf44.I3/nkSnzPMeX6rozvFiDHgi2DIt/BOc/lt14/2PH91"
   keyboard:
     layout: us
   locale: en_US.UTF-8
