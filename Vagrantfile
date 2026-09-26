@@ -100,15 +100,6 @@ enable-tftp
 tftp-root=/srv/tftp/amd64
 EOF
 
-sudo mkdir -p /srv/tftp/amd64
-sudo cp /usr/lib/syslinux/modules/bios/pxelinux.0 /srv/tftp/amd64/
-sudo cp /usr/lib/syslinux/modules/bios/ldlinux.c32 /srv/tftp/amd64/
-
-sudo mkdir -p /mnt/iso
-sudo mount -o loop /srv/images/ubuntu-24.04.4-live-server-amd64.iso /mnt/iso
-sudo cp /mnt/iso/casper/vmlinuz /srv/tftp/amd64/linux
-sudo cp /mnt/iso/casper/initrd /srv/tftp/amd64/initrd
-sudo umount /mnt/iso
 
     echo "=== Начинаю копирование ISO (3.17 ГБ). Это может занять 1-3 минуты ==="
     # Копируем ISO, если его ещё нет
@@ -118,10 +109,21 @@ sudo umount /mnt/iso
       echo "=== ISO скопирован ==="
     else
       echo "=== ISO уже на месте, копирование не требуется ==="
-    fi
+    fi 
 
-sudo mkdir -p /srv/tftp/amd64/pxelinux.cfg
-sudo tee /srv/tftp/amd64/pxelinux.cfg/default > /dev/null <<'EOF'
+    sudo mkdir -p /srv/tftp/amd64
+    sudo cp /usr/lib/syslinux/modules/bios/pxelinux.0 /srv/tftp/amd64/
+    sudo cp /usr/lib/syslinux/modules/bios/ldlinux.c32 /srv/tftp/amd64/
+
+    sudo mkdir -p /mnt/iso
+    sudo mount -o loop /srv/images/ubuntu-24.04.4-live-server-amd64.iso /mnt/iso
+    sudo cp /mnt/iso/casper/vmlinuz /srv/tftp/amd64/linux
+    sudo cp /mnt/iso/casper/initrd /srv/tftp/amd64/initrd
+    sudo umount /mnt/iso
+
+
+    sudo mkdir -p /srv/tftp/amd64/pxelinux.cfg
+    sudo tee /srv/tftp/amd64/pxelinux.cfg/default > /dev/null <<'EOF'
 DEFAULT install
 LABEL install
     KERNEL linux
