@@ -50,16 +50,24 @@ enable-tftp
 tftp-root=/srv/tftp/amd64
 EOF
 
+    echo "=== Начинаю копирование ISO (3.17 ГБ). Это может занять 1-3 минуты ==="
     # Копируем ISO, если его ещё нет
     if [ ! -f /srv/images/ubuntu-24.04.4-live-server-amd64.iso ]; then
       sudo mkdir -p /srv/images
       sudo cp /vagrant/images/ubuntu-24.04.4-live-server-amd64.iso /srv/images/
+      echo "=== ISO скопирован ==="
+    else
+      echo "=== ISO уже на месте, копирование не требуется ==="
     fi
 
+    echo "=== Начинаю распаковку netboot-архива ==="
     # Распаковываем netboot, если ещё не распакован
     if [ ! -f /srv/tftp/amd64/pxelinux.0 ]; then
       sudo mkdir -p /srv/tftp/amd64
       sudo tar -xzvf /vagrant/images/ubuntu-24.04.3-netboot-amd64.tar.gz -C /srv/tftp/
+      echo "=== Netboot распакован ==="
+    else
+      echo "=== Netboot уже распакован, пропускаю ==="
     fi
 
       sudo systemctl restart dnsmasq
